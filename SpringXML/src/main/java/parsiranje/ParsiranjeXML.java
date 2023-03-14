@@ -45,27 +45,7 @@ public class ParsiranjeXML {
         this.schemaFajl = schemaFajl;
     }
 
-    public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, DatatypeConfigurationException {
-        URL url = new URL("www.google.com");
-        InputStream inputStream = url.openStream();
-        InputSource inputSource = new InputSource(inputStream);
-        DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputSource);
 
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        dbf.setIgnoringElementContentWhitespace(true);
-        Document doc = dbf.newDocumentBuilder().parse(inputStream);
-
-        Image image = ImageIO.read(url);
-        ImageIO.write((RenderedImage) image, "png", new File("ime.png"));
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        ImageIO.write((RenderedImage) image, "png", byteArrayOutputStream);
-        String s = new String(byteArrayOutputStream.toByteArray(),0, byteArrayOutputStream.toByteArray().length);
-
-        DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
-        GregorianCalendar gc = new GregorianCalendar(2020, 10, 2);
-        XMLGregorianCalendar xmlGc = datatypeFactory.newXMLGregorianCalendar(gc);
-
-    }
 
     public List<Car> parsirajPoPotrosnjiItipuGoriva(String tipGoriva, double minimalnaPotrosnja, double maksimalnaPotrosnja){
         return parsirajPoTipuGoriva(tipGoriva).stream().filter(car ->
